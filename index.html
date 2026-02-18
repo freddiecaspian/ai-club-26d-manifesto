@@ -3,582 +3,475 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Club 26D Manifesto</title>
-    <meta name="description" content="Where We Think AI Is Heading - The INSEAD AI Club 26D Manifesto">
+    <title>AI Club 26D - Manifesto</title>
+    <meta name="description" content="The INSEAD AI Club 26D Manifesto. Not hype. Not fear. A line in the sand.">
     <meta property="og:title" content="AI Club 26D Manifesto">
-    <meta property="og:description" content="Where We Think AI Is Heading - The INSEAD AI Club 26D Manifesto">
+    <meta property="og:description" content="A fool with a tool is still a fool. Read the manifesto.">
     <meta property="og:type" content="website">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         :root {
-            --bg: #0a0a0b;
-            --surface: #111113;
-            --surface-2: #1a1a1e;
-            --border: #2a2a2e;
-            --text: #e8e8ed;
-            --text-muted: #8e8e93;
-            --accent: #6366f1;
-            --accent-glow: rgba(99, 102, 241, 0.15);
-            --accent-2: #818cf8;
-            --green: #34d399;
-            --amber: #fbbf24;
+            --black: #09090b;
+            --white: #fafafa;
+            --gray: #71717a;
+            --gray-light: #a1a1aa;
+            --gray-dark: #27272a;
+            --red: #ef4444;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
+            font-family: 'Inter', -apple-system, system-ui, sans-serif;
+            background: var(--black);
+            color: var(--white);
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
-        /* Hero */
+        /* ---- LAYOUT ---- */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 clamp(1.5rem, 5vw, 3rem);
+        }
+
+        /* ---- HERO ---- */
         .hero {
-            min-height: 100vh;
+            min-height: 100svh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 2rem;
-            position: relative;
-            overflow: hidden;
+            padding: 2rem 0;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(ellipse at center, var(--accent-glow) 0%, transparent 50%);
-            animation: pulse 8s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.5; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.1); }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 0.4rem 1rem;
-            background: var(--surface-2);
-            border: 1px solid var(--border);
-            border-radius: 100px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: var(--accent-2);
-            letter-spacing: 0.05em;
+        .hero .label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
+            color: var(--gray);
             margin-bottom: 2rem;
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            font-weight: 800;
-            line-height: 1.1;
-            letter-spacing: -0.03em;
-            margin-bottom: 1.5rem;
+            font-size: clamp(2.8rem, 8vw, 6rem);
+            font-weight: 900;
+            line-height: 1.0;
+            letter-spacing: -0.04em;
+            margin-bottom: 2rem;
         }
 
-        .hero h1 .gradient {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 50%, var(--green) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .hero h1 em {
+            font-style: normal;
+            color: var(--red);
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
+        .hero .subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+            color: var(--gray-light);
+            line-height: 1.6;
             max-width: 600px;
-            margin: 0 auto 3rem;
         }
 
-        .scroll-hint {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            animation: bounce 2s ease-in-out infinite;
+        /* ---- SECTIONS ---- */
+        section {
+            padding: clamp(4rem, 10vw, 8rem) 0;
+            border-top: 1px solid var(--gray-dark);
         }
 
-        .scroll-hint svg {
-            display: block;
-            margin: 0.5rem auto 0;
-            width: 20px;
-            height: 20px;
-            stroke: var(--text-muted);
+        .big-statement {
+            font-size: clamp(1.8rem, 4.5vw, 3rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            margin-bottom: 2rem;
         }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(8px); }
+        .big-statement em {
+            font-style: normal;
+            color: var(--red);
         }
 
-        /* Main content */
-        .content {
-            max-width: 720px;
-            margin: 0 auto;
-            padding: 0 2rem 6rem;
+        .body-text {
+            font-size: clamp(1rem, 2vw, 1.15rem);
+            color: var(--gray-light);
+            line-height: 1.7;
+            max-width: 640px;
         }
 
-        .section {
-            margin-bottom: 5rem;
-        }
+        .body-text + .body-text { margin-top: 1.25rem; }
 
-        .section-number {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            color: var(--accent);
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            margin-bottom: 0.75rem;
-        }
-
-        .section h2 {
-            font-size: clamp(1.5rem, 3vw, 2rem);
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-
-        .section p {
-            color: var(--text-muted);
-            margin-bottom: 1.25rem;
-            font-size: 1.05rem;
-        }
-
-        .section p strong {
-            color: var(--text);
+        .body-text strong {
+            color: var(--white);
             font-weight: 600;
         }
 
-        /* Callout boxes */
-        .callout {
-            background: var(--surface);
-            border-left: 3px solid var(--accent);
-            padding: 1.25rem 1.5rem;
-            border-radius: 0 8px 8px 0;
-            margin: 2rem 0;
+        /* ---- STAT STRIP ---- */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1px;
+            background: var(--gray-dark);
+            margin: 3rem 0;
+            border-radius: 2px;
+            overflow: hidden;
         }
 
-        .callout p {
-            color: var(--text);
-            margin-bottom: 0;
-            font-size: 0.95rem;
-            font-weight: 500;
+        .stat {
+            background: var(--black);
+            padding: 1.5rem;
         }
 
-        .callout .label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            color: var(--accent-2);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
+        .stat .number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            line-height: 1;
             margin-bottom: 0.5rem;
         }
 
-        /* Maturity model */
-        .maturity-grid {
-            display: grid;
+        .stat .desc {
+            font-size: 0.85rem;
+            color: var(--gray);
+            line-height: 1.4;
+        }
+
+        /* ---- MATURITY MODEL ---- */
+        .levels {
+            margin: 3rem 0;
+            display: flex;
+            flex-direction: column;
             gap: 1px;
-            background: var(--border);
-            border-radius: 12px;
+            background: var(--gray-dark);
+            border-radius: 2px;
             overflow: hidden;
-            margin: 2rem 0;
         }
 
-        .maturity-item {
-            background: var(--surface);
+        .level {
+            background: var(--black);
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            align-items: baseline;
             padding: 1.25rem 1.5rem;
+            gap: 1rem;
         }
 
-        .maturity-item .stage {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
+        @media (max-width: 500px) {
+            .level { grid-template-columns: 1fr; gap: 0.25rem; }
+        }
+
+        .level .name {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .level .explain {
+            font-size: 0.95rem;
+            color: var(--gray-light);
+            line-height: 1.5;
+        }
+
+        .level.dim .name { color: var(--gray); }
+        .level.current .name { color: var(--red); }
+        .level.target .name { color: var(--white); }
+        .level.future .name { color: var(--gray); }
+
+        .level.current {
+            background: #1a0a0a;
+            border-left: 3px solid var(--red);
+        }
+
+        .level.target {
+            background: #0f0f12;
+        }
+
+        /* ---- PROVOCATIONS ---- */
+        .provocation {
+            font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+            font-weight: 700;
+            line-height: 1.25;
+            letter-spacing: -0.02em;
+            padding: clamp(3rem, 8vw, 5rem) 0;
+            border-top: 1px solid var(--gray-dark);
+        }
+
+        .provocation em {
+            font-style: normal;
+            color: var(--red);
+        }
+
+        .provocation .attr {
+            display: block;
+            margin-top: 1rem;
+            font-size: 0.8rem;
             font-weight: 500;
-            letter-spacing: 0.05em;
+            color: var(--gray);
+            letter-spacing: 0;
+        }
+
+        /* ---- MISSION LIST ---- */
+        .missions {
+            margin: 3rem 0 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mission {
+            padding: 1.75rem 0;
+            border-top: 1px solid var(--gray-dark);
+            display: grid;
+            grid-template-columns: 2rem 1fr;
+            gap: 1rem;
+            align-items: baseline;
+        }
+
+        .mission:last-child {
+            border-bottom: 1px solid var(--gray-dark);
+        }
+
+        .mission .num {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--gray);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .mission .title {
+            font-size: 1.1rem;
+            font-weight: 700;
             margin-bottom: 0.4rem;
         }
 
-        .maturity-item:nth-child(1) .stage { color: var(--text-muted); }
-        .maturity-item:nth-child(2) .stage { color: var(--amber); }
-        .maturity-item:nth-child(3) .stage { color: var(--accent-2); }
-        .maturity-item:nth-child(4) .stage { color: var(--green); }
-
-        .maturity-item p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 0;
+        .mission .desc {
+            font-size: 0.95rem;
+            color: var(--gray-light);
+            line-height: 1.6;
         }
 
-        /* Mission list */
-        .mission-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .mission-list li {
-            position: relative;
-            padding: 1.5rem 0 1.5rem 2rem;
-            border-bottom: 1px solid var(--border);
-            color: var(--text-muted);
-            font-size: 1rem;
-        }
-
-        .mission-list li:last-child {
-            border-bottom: none;
-        }
-
-        .mission-list li::before {
-            content: attr(data-num);
-            position: absolute;
-            left: 0;
-            top: 1.5rem;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            color: var(--accent);
-            font-weight: 600;
-        }
-
-        .mission-list li strong {
-            color: var(--text);
-            font-weight: 600;
-            display: block;
-            margin-bottom: 0.25rem;
-            font-size: 1.05rem;
-        }
-
-        /* Levers */
-        .lever-grid {
-            display: grid;
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
-
-        .lever {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 1.25rem 1.5rem;
-        }
-
-        .lever strong {
-            color: var(--text);
-            font-size: 0.9rem;
-        }
-
-        .lever p {
-            font-size: 0.9rem;
-            margin-bottom: 0;
-        }
-
-        /* Closing */
+        /* ---- CLOSING ---- */
         .closing {
-            text-align: center;
-            padding: 4rem 2rem 6rem;
-            max-width: 700px;
-            margin: 0 auto;
+            padding: clamp(5rem, 12vw, 10rem) 0;
+            border-top: 1px solid var(--gray-dark);
         }
 
-        .closing .divider {
-            width: 40px;
-            height: 3px;
-            background: var(--accent);
-            margin: 0 auto 2.5rem;
-            border-radius: 2px;
+        .closing .big {
+            font-size: clamp(2.2rem, 6vw, 4rem);
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -0.04em;
+            margin-bottom: 2rem;
         }
 
-        .closing blockquote {
-            font-size: clamp(1.3rem, 2.5vw, 1.6rem);
-            font-weight: 600;
-            line-height: 1.4;
-            letter-spacing: -0.01em;
-            margin-bottom: 1.5rem;
+        .closing .big em {
+            font-style: normal;
+            color: var(--red);
         }
 
-        .closing p {
-            color: var(--text-muted);
-            font-size: 1.05rem;
+        .closing .final {
+            font-size: clamp(1rem, 2vw, 1.15rem);
+            color: var(--gray-light);
+            line-height: 1.7;
+            max-width: 580px;
         }
 
-        /* Footer */
+        .closing .final strong {
+            color: var(--white);
+        }
+
+        /* ---- FOOTER ---- */
         footer {
-            text-align: center;
-            padding: 2rem;
-            border-top: 1px solid var(--border);
-            color: var(--text-muted);
-            font-size: 0.8rem;
+            padding: 2rem 0;
+            border-top: 1px solid var(--gray-dark);
+            font-size: 0.75rem;
+            color: var(--gray);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
         }
 
-        footer a {
-            color: var(--accent-2);
-            text-decoration: none;
-        }
-
-        /* Separator */
-        .sep {
-            width: 100%;
-            height: 1px;
-            background: var(--border);
-            margin: 3rem 0;
-        }
-
-        /* Source tags */
-        .sources {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            font-style: italic;
-            margin-top: 1.5rem;
-            opacity: 0.6;
-        }
-
-        /* Responsive */
-        @media (max-width: 640px) {
-            .content {
-                padding: 0 1.25rem 4rem;
-            }
-            .section {
-                margin-bottom: 3.5rem;
-            }
-        }
-
-        /* Fade-in animation */
-        .fade-in {
+        /* ---- FADE IN ---- */
+        .fade {
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            transform: translateY(12px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .fade.in {
+            opacity: 1;
+            transform: none;
         }
 
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+        /* ---- SELECTION ---- */
+        ::selection {
+            background: var(--red);
+            color: var(--white);
         }
     </style>
 </head>
 <body>
 
-    <section class="hero">
-        <div class="hero-content fade-in">
-            <div class="badge">INSEAD AI Club 26D</div>
-            <h1>Where We Think<br><span class="gradient">AI Is Heading</span></h1>
-            <p>Not hype. Not fear. A clear-eyed view of the most significant platform shift since the internet - and what it means for everyone graduating into it.</p>
+<div class="container">
+
+    <!-- HERO -->
+    <div class="hero fade">
+        <div class="label">INSEAD AI Club 26D / Manifesto</div>
+        <h1>Nobody knows<br>the <em>ceiling.</em></h1>
+        <p class="subtitle">Every previous technology shift had visible limits. Phones can't fly. Fibre can't reach everywhere. With AI, we genuinely don't know what it'll be capable of in two years. That uncertainty is the point. And most people - including most MBA students - are dramatically underestimating how fast this moves.</p>
+    </div>
+
+    <!-- THE SHIFT -->
+    <section class="fade">
+        <p class="big-statement">This is PCs, the web, and mobile.<br><em>All over again.</em></p>
+        <p class="body-text">Every platform shift created new value chains, new gatekeepers, new winners. But the first movers almost never captured the value. It went to the people who built real products and distribution. Not the people who demoed well.</p>
+        <p class="body-text">We're in the absorption phase. A third of enterprises have deployed at least one GenAI solution. Another quarter don't plan to do anything yet. Cloud is "old and boring" but still only covers a third of workflows. <strong>The real disruption blends into the fabric and becomes unremarkable.</strong></p>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="number">50%</div>
+                <div class="desc">of entry-level white-collar jobs eliminated within 1-5 years. Dario Amodei's prediction. Many think he's being conservative.</div>
+            </div>
+            <div class="stat">
+                <div class="number">$1.5bn</div>
+                <div class="desc">in generative AI bookings per quarter at Accenture alone. Mostly pilots. The real wave hasn't hit yet.</div>
+            </div>
+            <div class="stat">
+                <div class="number">0</div>
+                <div class="desc">convenient gaps to retrain into. AI improves at everything simultaneously. Whatever you pivot to, it's getting better at that too.</div>
+            </div>
         </div>
-        <div class="scroll-hint">
-            Read the manifesto
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 5v14M5 12l7 7 7-7"/>
-            </svg>
+
+        <p class="body-text"><strong>Nothing done on a screen is safe in the medium term.</strong> That's not a prediction. It's a description of what's already happening. A year ago AI could barely write a few lines of code. Now it writes hundreds of thousands of lines that work.</p>
+    </section>
+
+    <!-- PROVOCATION 1 -->
+    <div class="provocation fade">
+        The domains already being hit: legal work, financial analysis, writing, software engineering, medical analysis, customer service. <em>The physical world is the only domain where intelligence hits a hard bottleneck. Everything else is being compressed.</em>
+    </div>
+
+    <!-- MATURITY -->
+    <section class="fade">
+        <p class="big-statement">You're probably stuck<br>at <em>"Productive."</em></p>
+        <p class="body-text">Gary Eimerman, Chief Learning Officer at Multiverse, built a four-stage AI maturity model. Most corporate training stops at stage one. Most MBA students - including most of this cohort - plateau at stage two.</p>
+
+        <div class="levels">
+            <div class="level dim">
+                <div class="name">Literate</div>
+                <div class="explain">You know the vocabulary. You understand prompting. A YouTube tutorial gets you here.</div>
+            </div>
+            <div class="level current">
+                <div class="name">Productive</div>
+                <div class="explain">You use AI to do the same things faster. Case prep, summarising, drafting. This is where most people stop. This is where you probably are.</div>
+            </div>
+            <div class="level target">
+                <div class="name">Automation</div>
+                <div class="explain">You fundamentally rethink how you work. AI becomes a team member you delegate to. You stop prompting and start managing.</div>
+            </div>
+            <div class="level future">
+                <div class="name">AI Native</div>
+                <div class="explain">Built from the ground up with AI as infrastructure. Nobody's fully here yet.</div>
+            </div>
+        </div>
+
+        <p class="body-text">The jump from Productive to Automation is where everything changes. The barrier isn't technical. <strong>It's psychological.</strong> People fear making their role replaceable.</p>
+        <p class="body-text">Was technical background the predictor of who's good at AI? No. The common traits are curiosity, grit, and ability to learn. Not CS degrees. Not engineering experience. The people who make the jump treat AI like a new colleague - not a manual they need to read first.</p>
+    </section>
+
+    <!-- PROVOCATION 2 -->
+    <div class="provocation fade">
+        At Multiverse, AI use is expected. At INSEAD, <em>students hide it.</em> That hidden-use culture is a symptom of being stuck at Productive. When AI feels like a shortcut, it feels like cheating. When it's embedded in your workflow, hiding it would be like hiding that you use email.
+    </div>
+
+    <!-- TASTE -->
+    <section class="fade">
+        <p class="big-statement">"Good at AI" <em>isn't a technical skill.</em></p>
+        <p class="body-text">INSEAD's Career Development Centre lists "AI & Digital Transformation" as a transferable skill. No definition. No explanation. Just... AI. Tick.</p>
+        <p class="body-text">The UK Government spent &pound;4.1m on an AI Skills Hub to upskill 10 million workers. It turned out to be a website linking to courses that don't exist. Four million quid.</p>
+        <p class="body-text">Students who outsource assignments to AI perform on par with students who skipped the assignment entirely. The task gets done. The grade gets awarded. <strong>The skill never develops.</strong></p>
+    </section>
+
+    <!-- PROVOCATION 3 -->
+    <div class="provocation fade">
+        In a world where AI can generate infinite variations of anything, <em>the person who knows which one to choose becomes the most valuable person in the room.</em> That skill isn't technical. It's taste.
+        <span class="attr">- Nitin Nohria, former Dean of Harvard Business School</span>
+    </div>
+
+    <!-- MISSION -->
+    <section class="fade">
+        <p class="big-statement">What this club <em>actually does.</em></p>
+
+        <div class="missions">
+            <div class="mission">
+                <div class="num">01</div>
+                <div>
+                    <div class="title">Move people from Productive to Automation.</div>
+                    <div class="desc">Not through lectures. Through doing. Workshops where you build systems, not sit through demos. Pair a first-time user with someone who's automated their workflow.</div>
+                </div>
+            </div>
+            <div class="mission">
+                <div class="num">02</div>
+                <div>
+                    <div class="title">Kill the hidden-use culture.</div>
+                    <div class="desc">AI use at INSEAD feels like a dirty secret. That's backwards. This is the place where sharing how you use AI is normal. Not brave.</div>
+                </div>
+            </div>
+            <div class="mission">
+                <div class="num">03</div>
+                <div>
+                    <div class="title">Bridge hype and reality.</div>
+                    <div class="desc">Real practitioners. Real use cases. Real constraints. People who can answer "what actually went wrong when you tried to deploy this?"</div>
+                </div>
+            </div>
+            <div class="mission">
+                <div class="num">04</div>
+                <div>
+                    <div class="title">Make you disproportionately prepared.</div>
+                    <div class="desc">Every person in this cohort enters a job market being restructured in real time. Not by teaching tools. By building the judgment that makes the difference.</div>
+                </div>
+            </div>
+            <div class="mission">
+                <div class="num">05</div>
+                <div>
+                    <div class="title">Connect Fonty and Singapore.</div>
+                    <div class="desc">AI adoption looks different in Asia and Europe. Different regulation, different industries, different speeds. A global club should leverage that.</div>
+                </div>
+            </div>
+            <div class="mission">
+                <div class="num">06</div>
+                <div>
+                    <div class="title">Preserve learning while leveraging speed.</div>
+                    <div class="desc">You can use AI and still learn. But it requires intention. We model thoughtful AI use - not maximal AI use.</div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <main class="content">
-
-        <!-- Section 1: What We Believe -->
-        <div class="section fade-in">
-            <div class="section-number">01 — What We Believe</div>
-            <h2>Nobody knows the ceiling</h2>
-            <p>AI is the most significant platform shift since the internet. Not because of what it can do today - but because nobody knows the ceiling. Every previous technology shift had visible limits. Phones can't fly. Fibre can't be deployed everywhere.</p>
-            <p>With AI, we genuinely don't know how much better the models will get or what they'll be capable of in two years. <strong>That uncertainty is the point.</strong></p>
-            <p>We believe most people - including most MBA students - are dramatically underestimating how fast this moves and how broadly it hits. The AI Club exists not to hype this up, but to help people see it clearly and act on it.</p>
-        </div>
-
-        <div class="sep"></div>
-
-        <!-- Section 2: Platform Shift -->
-        <div class="section fade-in">
-            <div class="section-number">02 — The Platform Shift</div>
-            <h2>This is PCs, the web, and mobile - all over again</h2>
-            <p>Benedict Evans frames it well: AI is a platform shift on the scale of PCs, the web, and mobile. Each created entirely new value chains, new gatekeepers, new winners. But the first movers very rarely end up capturing the value. Value flows to the people who build real products and distribution, not to the people who demo well.</p>
-            <p>We're in what Evans calls the <strong>"absorption phase."</strong> Companies are automating existing workflows. Accenture reports $1.5bn a quarter in generative AI bookings, mostly pilots. About a third of large enterprises have deployed at least one GenAI solution. Another quarter don't plan to do anything yet.</p>
-            <p>Cloud is now "old and boring" but still only covers a third of enterprise workflows. Barcodes took years to deploy - but once done, enabled managing 5-10x more SKUs. The real disruption blends into the fabric and becomes unremarkable.</p>
-            <div class="callout">
-                <div class="label">What this means for us</div>
-                <p>Don't chase the hype. Build understanding. The people who thrive through platform shifts are the ones who understand the structure of the change - not the ones who adopted fastest.</p>
-            </div>
-            <div class="sources">Sources: Benedict Evans - "The Case Against AI Stealing All Our Jobs", "AI Eats the World"</div>
-        </div>
-
-        <div class="sep"></div>
-
-        <!-- Section 3: Inflection Point -->
-        <div class="section fade-in">
-            <div class="section-number">03 — The Inflection Point</div>
-            <h2>We're living through it right now</h2>
-            <p>Dario Amodei - the CEO of Anthropic - has publicly predicted that AI will eliminate 50% of entry-level white-collar jobs within one to five years. Many in the industry think he's being conservative.</p>
-            <p>Matt Shumer puts it more bluntly: AI isn't replacing one specific skill. <strong>It's a general substitute for cognitive work.</strong> It gets better at everything simultaneously. When factories automated, workers retrained as office workers. When the internet disrupted retail, workers moved into logistics. But AI doesn't leave a convenient gap to move into. Whatever you retrain for, it's improving at that too.</p>
-            <p>The domains already being hit: legal work, financial analysis, writing and content, software engineering, medical analysis, customer service. A year ago AI could barely write a few lines of code without errors. Now it writes hundreds of thousands of lines that work correctly.</p>
-            <p><strong>Nothing done on a screen is safe in the medium term.</strong> That's not a prediction - it's a description of what's already happening.</p>
-            <div class="callout">
-                <div class="label">What this means for us</div>
-                <p>We're not preparing for a future disruption. We're living through it. Every person in this cohort will graduate into a world where the rules of knowledge work have fundamentally changed. The AI Club exists to make sure they're not blindsided by it.</p>
-            </div>
-            <div class="sources">Sources: Matt Shumer - "Why No Knowledge Work Is Safe", Dario Amodei on powerful AI</div>
-        </div>
-
-        <div class="sep"></div>
-
-        <!-- Section 4: Maturity Model -->
-        <div class="section fade-in">
-            <div class="section-number">04 — The Maturity Model</div>
-            <h2>Most people are stuck at "Productive"</h2>
-            <p>Gary Eimerman, Chief Learning Officer at Multiverse, developed a four-stage AI maturity model with his learning sciences team:</p>
-
-            <div class="maturity-grid">
-                <div class="maturity-item">
-                    <div class="stage">Stage 1: Literate</div>
-                    <p>You know what an LLM is, you understand prompting, you know the vocabulary. Most corporate "AI training" stops here.</p>
-                </div>
-                <div class="maturity-item">
-                    <div class="stage">Stage 2: Productive</div>
-                    <p>You use AI to do things faster. Same workflows, augmented. Case prep, summarising, drafting. <strong>This is where most people plateau</strong> - including most of this cohort.</p>
-                </div>
-                <div class="maturity-item">
-                    <div class="stage">Stage 3: Automation</div>
-                    <p>You fundamentally rethink how you work. AI becomes a team member you delegate to, not an app you interact with. You stop prompting and start managing.</p>
-                </div>
-                <div class="maturity-item">
-                    <div class="stage">Stage 4: AI Native</div>
-                    <p>The organisation is built from the ground up with AI as core infrastructure. Nobody is fully here yet.</p>
-                </div>
-            </div>
-
-            <p>The jump from Productive to Automation is where everything changes. And the barrier isn't technical - <strong>it's psychological.</strong> People fear making their role replaceable. The mental model of "a tool I use" is deeply ingrained. Shifting to "an agent I manage" requires a fundamental reconceptualisation of what work even is.</p>
-            <p>Was asked whether technical background predicts who's good at AI. His answer: <strong>no.</strong> The common traits are curiosity, grit, and ability to learn. Not CS degrees. Not engineering experience.</p>
-
-            <h3 style="font-size: 1.1rem; margin: 2rem 0 1rem; color: var(--text);">What unlocks the transition?</h3>
-
-            <div class="lever-grid">
-                <div class="lever">
-                    <strong>Leadership modelling</strong>
-                    <p>Gary personally pushes his EA every other week: "Why aren't you automating that?" When the leader signals it's expected, hiding stops.</p>
-                </div>
-                <div class="lever">
-                    <strong>Incentive structures</strong>
-                    <p>Quarterly Founder's Awards for building something impactful using AI. Performance measurement that includes AI adoption behaviours.</p>
-                </div>
-                <div class="lever">
-                    <strong>Visibility mechanisms</strong>
-                    <p>Sharing AI wins on all-hands. Slack engagement on shared automations. Making AI use as unremarkable as spell check.</p>
-                </div>
-            </div>
-
-            <p>The contrast with INSEAD is stark. At Multiverse, AI use is expected. At INSEAD, students hide it. That hidden-use culture is a symptom of being stuck at Productive - when AI feels like a shortcut, it feels like cheating. When it's embedded in your workflow at the Automation stage, hiding it would be like hiding that you use email.</p>
-
-            <div class="callout">
-                <div class="label">What this means for us</div>
-                <p>The AI Club's job is to move people from Productive to Automation. Not to make them Literate - a YouTube tutorial can do that. The real value is in creating the permission structure, the exposure, and the community that helps people make the psychological jump.</p>
-            </div>
-            <div class="sources">Sources: Gary Eimerman, Multiverse - AI Maturity Model and Cultural Adoption</div>
-        </div>
-
-        <div class="sep"></div>
-
-        <!-- Section 5: Good at AI -->
-        <div class="section fade-in">
-            <div class="section-number">05 — The Taste Argument</div>
-            <h2>"Good at AI" isn't a technical skill</h2>
-            <p>INSEAD's Career Development Centre lists "AI & Digital Transformation" as a transferable skill employers want. No definition. No explanation. Just... AI. Tick.</p>
-            <p>The UK Government spent &pound;4.1m on an AI Skills Hub to upskill 10 million workers. It turned out to be a website linking to courses that don't exist. Four million quid.</p>
-            <p>Research shows that students who outsource assignments to AI perform on par with students who skipped the assignment entirely. The task gets done. The grade gets awarded. <strong>The skill never develops.</strong></p>
-            <p>Nitin Nohria, the former Dean of Harvard Business School, takes this further: in a world where AI can generate infinite variations of anything, <strong>the person who knows which one to choose becomes the most valuable person in the room.</strong> That skill isn't technical. It's taste.</p>
-            <p>AI has no taste. It can't tell the difference between something edgy and something offensive. Between something novel and something merely loud. That requires judgment, lived experience, a point of view.</p>
-            <div class="callout">
-                <div class="label">What this means for us</div>
-                <p>The AI Club doesn't teach people to use ChatGPT. We help people develop the judgment to know when to use AI, when not to, and how to stay sharp while leveraging it. We care about the human, not the tool.</p>
-            </div>
-            <div class="sources">Sources: Nitin Nohria on taste, LinkedIn Post - "What Does 'Good at AI' Actually Mean"</div>
-        </div>
-
-        <div class="sep"></div>
-
-        <!-- Section 6: What We Do -->
-        <div class="section fade-in">
-            <div class="section-number">06 — The Mission</div>
-            <h2>What the AI Club exists to do</h2>
-
-            <ol class="mission-list">
-                <li data-num="01">
-                    <strong>Move people from Productive to Automation</strong>
-                    Not through lectures - through doing. Workshops where people build systems, not sit through demos. Pair a first-time user with someone who's automated their workflow. Make AI wins visible. Celebrate people who've built something that didn't exist before.
-                </li>
-                <li data-num="02">
-                    <strong>Kill the hidden-use culture</strong>
-                    AI use at INSEAD feels like a dirty secret. That's backwards. The AI Club is the place where sharing how you use AI is normal - not brave. When people see their classmates building real things with AI and talking about it openly, the stigma dies.
-                </li>
-                <li data-num="03">
-                    <strong>Bridge the gap between hype and reality</strong>
-                    We bring in people who are actually building with AI and deploying it at scale. Real practitioners. Real use cases. Real constraints. People who can answer "what actually went wrong when you tried to deploy this?"
-                </li>
-                <li data-num="04">
-                    <strong>Make INSEAD students disproportionately prepared</strong>
-                    Every person in this cohort is about to enter a job market being restructured in real time. The AI Club gives them a head start - not by teaching tools, but by building the judgment, exposure, and practical experience that makes the difference.
-                </li>
-                <li data-num="05">
-                    <strong>Connect both campuses</strong>
-                    AI adoption looks different in Asia and Europe. Different regulatory environments, different cultural attitudes, different industries being disrupted at different speeds. A global club should leverage that.
-                </li>
-                <li data-num="06">
-                    <strong>Preserve learning while leveraging speed</strong>
-                    You can use AI and still learn - but it requires intention. The club should model what thoughtful AI use looks like - not just maximal AI use.
-                </li>
-            </ol>
-        </div>
-
-    </main>
-
-    <!-- Closing -->
-    <section class="closing fade-in">
-        <div class="divider"></div>
-        <blockquote>A fool with a tool is still a fool.</blockquote>
-        <p>The most expensive mistake you can make with AI isn't using the wrong model - it's outsourcing the thinking that makes you valuable.</p>
-        <p style="margin-top: 1rem;">We're not an AI hype club. We're here because this technology is genuinely transformative, the disruption is already happening, and the difference between someone who navigates it well and someone who doesn't will be defined in the next two years.</p>
-        <p style="margin-top: 1.5rem; color: var(--text); font-weight: 600;">This team exists to make sure INSEAD students are on the right side of that line.</p>
-    </section>
+    <!-- CLOSING -->
+    <div class="closing fade">
+        <p class="big">A fool with a tool<br>is still <em>a fool.</em></p>
+        <p class="final">The most expensive mistake you can make with AI isn't using the wrong model. It's outsourcing the thinking that makes you valuable.</p>
+        <p class="final" style="margin-top: 1.5rem;"><strong>We're not an AI hype club.</strong> We're here because this technology is genuinely transformative, the disruption is already happening, and the difference between someone who navigates it well and someone who doesn't will be defined in the next two years.</p>
+        <p class="final" style="margin-top: 1.5rem;">This team exists to make sure INSEAD students are on the right side of that line.</p>
+    </div>
 
     <footer>
         INSEAD AI Club 26D &middot; Fontainebleau &amp; Singapore
     </footer>
 
-    <script>
-        // Fade-in on scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
+</div>
 
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-        // Hero fade-in immediately
-        document.querySelector('.hero .fade-in').classList.add('visible');
-    </script>
+<script>
+const obs = new IntersectionObserver(es => {
+    es.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.15 });
+document.querySelectorAll('.fade').forEach(el => obs.observe(el));
+// Hero visible immediately
+document.querySelector('.hero').classList.add('in');
+</script>
 
 </body>
 </html>
